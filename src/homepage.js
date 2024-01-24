@@ -27,8 +27,8 @@ export function homepageLoad() {
     body.style.padding = 0;
     body.style.boxSizing = "border-box";
     body.style.fontFamily = "'Poppins' , sans-serif";
-    // body.style.background = 'url("../src/assets/hero-bg.jpg")'
-    body.style.background = "url('../src/assets/latte.png')"
+    body.style.background = 'url("./assets/hero-bg.jpg")'
+    // body.style.background = "url('../src/assets/latte.png')"
     body.style.backgroundPosition = 'center';
     body.style.backgroundSize = 'cover';
     body.style.height = "100vh";
