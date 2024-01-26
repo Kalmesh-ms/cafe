@@ -1,4 +1,10 @@
+import { menuPageLoad } from "../src/menupage";
+import { homepageLoad } from "../src/homepage";
+import { aboutUsPageLoad } from "../src/aboutUspage";
+
+
 export function bodyNav (){
+
     const body = document.querySelector('body');
     const header = document.createElement('header'),
     nav = document.createElement('nav'),
@@ -25,7 +31,8 @@ export function bodyNav (){
     body.style.backgroundPosition = 'center';
     body.style.backgroundSize = 'cover';
     body.style.height = "100vh";
-    body.setAttribute('transition' , 'all 1s ease')
+    body.style.overflow = "hidden"
+    body.setAttribute('transition' , 'all 0.3s ease')
 
     //header
     //nav bar
@@ -40,11 +47,25 @@ export function bodyNav (){
     home.style.padding = "0"
     home.classList.add('home');
     home.textContent = "Home"
+    home.addEventListener('click', () => {
+        const HOME = document.querySelector('#homeSection');
+        if (!HOME.firstChild){
+        homepageLoad();
+        }
+    });
+    home.style.cursor = "pointer"
     hoverColor(home)
     links.appendChild(home);
     
     let menu = document.createElement('li');
     menu.classList.add('menu');
+    menu.addEventListener('click', () => {
+        const MENU = document.querySelector('#menuSection');
+        if (!MENU.firstChild)
+        menuPageLoad();
+
+    });
+    menu.style.cursor = "pointer"
     menu.textContent = "Menu";
     hoverColor(menu)
     links.appendChild(menu);
@@ -53,6 +74,13 @@ export function bodyNav (){
     aboutUs.classList.add('aboutUs');
     aboutUs.style.marginRight = "32px"
     aboutUs.textContent = "About Us";
+    aboutUs.style.cursor = "pointer"
+    aboutUs.addEventListener('click', () => {
+        const ABOUTUS = document.querySelector('#aboutUsSection');
+        if (!ABOUTUS.firstChild)
+        aboutUsPageLoad();
+
+    });
     hoverColor(aboutUs);
     links.appendChild(aboutUs);
     
@@ -61,7 +89,6 @@ export function bodyNav (){
     header.style.top = "0";
     header.style.left = "0";
     header.style.width = "100%"
-    header.style.padding = "20px";
     
     //nav
     nav.style.color = "#fff"
@@ -82,6 +109,13 @@ export function bodyNav (){
     logo.appendChild(span);
     logo.style.fontSize = "2.1rem"
     logo.style.fontWeight = "600";
+    logo.style.cursor = "pointer"
+    logo.addEventListener('click', () => {
+        const HOME = document.querySelector('#homeSection');
+        if (!HOME.firstChild){
+        homepageLoad();
+        }
+    });
     hoverColor(logo);
     
 
@@ -94,7 +128,7 @@ export function bodyNav (){
     nav.appendChild(logo);
     nav.appendChild(links);
     header.appendChild(nav)
-    content.appendChild(header);
+    body.appendChild(header);
 
     const mediaQuery = window.matchMedia('(max-width: 600px)');
     

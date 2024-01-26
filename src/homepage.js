@@ -1,10 +1,18 @@
+import { menuPageLoad } from "../src/menupage";
 
-export function homepageLoad() {
+export function homepageLoad(){
+    const HOME = document.querySelector('#homeSection');
+    const MENU = document.querySelector('#menuSection');
+    const ABOUTUS = document.querySelector('#aboutUsSection');
 
+    while(MENU.firstChild ){
+        MENU.removeChild(MENU.lastChild);
+    }
+    while (ABOUTUS.firstChild){
+        ABOUTUS.removeChild(ABOUTUS.lastChild);
+    }
 
-    const content = document.querySelector('#content');
-
-    
+    document.querySelector('body').setAttribute('transition' , 'all 0.3s ease')
     
     //HOME
     
@@ -27,6 +35,9 @@ export function homepageLoad() {
     
     orderBtn.classList.add('orderBtn');
     orderBtn.textContent = "Order Now"
+    orderBtn.onclick = () => {
+        menuPageLoad();
+    }
     
     
     function btnHoverColor (x) {
@@ -51,7 +62,7 @@ export function homepageLoad() {
     heroSection.style.color = "#fff"
     heroSection.style.maxWidth = "1200px";
     heroSection.style.margin = "0 auto";
-    heroSection.style.width = "100%";
+    heroSection.style.width = "90%";
     heroDiv.style.textAlign = "center"
     
     h1.style.fontSize = "3rem";
@@ -80,7 +91,9 @@ export function homepageLoad() {
     
     heroSection.appendChild(heroDiv);
     
-    content.appendChild(heroSection)
+    HOME.appendChild(heroSection)
+
+    content.appendChild(HOME);
     
 }    
     
