@@ -187,7 +187,7 @@ export function homepageLoad() {
         if(mediaQuery.matches){
           
             links.style.position = "fixed";
-            links.style.left = "0";
+            links.style.right = "-300px";
             links.style.top = "0";
             links.style.height = "100vh";
             links.style.width = "170px";
@@ -196,6 +196,7 @@ export function homepageLoad() {
             links.style.flexDirection = "column";
             links.style.color = "#000"
             links.style.padding = "70px 40px 0"
+            links.setAttribute('transition' , 'all 0.15s ease')
             hoverColor(home, "#000");
             hoverColor(menu , "#000");
             hoverColor(aboutUs , "#000");
@@ -203,17 +204,35 @@ export function homepageLoad() {
             
             const optionsBtn = document.createElement('span');
             optionsBtn.classList.add("material-symbols-outlined");
+            optionsBtn.setAttribute('id' , 'optionsBtn');
             optionsBtn.style.color = "#fff"
             optionsBtn.textContent = "menu"
-
+            optionsBtn.style.position = "absolute"
+            optionsBtn.style.right = "50px";
+            optionsBtn.style.top = "20px";
+            optionsBtn.style.cursor = "pointer";
+            
             const closeOptionsBtn = document.createElement('span');
             closeOptionsBtn.classList.add('material-symbols-outlined');
+            closeOptionsBtn.setAttribute('id' , 'closeOptionsBtn')
             closeOptionsBtn.textContent = "close";
-        
+            closeOptionsBtn.style.position = "absolute"
+            closeOptionsBtn.style.right = "50px";
+            closeOptionsBtn.style.top = "20px";
+            closeOptionsBtn.style.color = "#000"
+            closeOptionsBtn.style.cursor = "pointer";
+            
             nav.appendChild(optionsBtn);
-            nav.appendChild(closeOptionsBtn);
-            header.appendChild(nav)
-            content.appendChild(header);
+            optionsBtn.addEventListener('click' , () => {
+                links.style.right = "0";
+                links.style.color = "#000"
+                nav.appendChild(closeOptionsBtn);
+            } )
+
+            closeOptionsBtn.addEventListener ('click' , () => {
+                links.style.right = "-300px";
+                nav.removeChild(closeOptionsBtn);
+            } )
 
         }
         else  return;
