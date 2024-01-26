@@ -1,3 +1,4 @@
-import { homepageLoad } from "./homepage";
+import { homepageLoad } from "../src/homepage";
+
 
 homepageLoad();

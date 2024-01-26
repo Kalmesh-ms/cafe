@@ -2,8 +2,6 @@ export function homepageLoad() {
 
     const body = document.querySelector('body'),
     content = body.querySelector('#content');
-
-    const brownie = "#c06b3e";
     
     
     const header = document.createElement('header'),
@@ -28,7 +26,6 @@ export function homepageLoad() {
     body.style.boxSizing = "border-box";
     body.style.fontFamily = "'Poppins' , sans-serif";
     body.style.background = 'url("./assets/hero-bg.jpg")'
-    // body.style.background = "url('../src/assets/latte.png')"
     body.style.backgroundPosition = 'center';
     body.style.backgroundSize = 'cover';
     body.style.height = "100vh";
@@ -58,6 +55,7 @@ export function homepageLoad() {
     
     let aboutUs = document.createElement('li');
     aboutUs.classList.add('aboutUs');
+    aboutUs.style.marginRight = "32px"
     aboutUs.textContent = "About Us";
     hoverColor(aboutUs);
     links.appendChild(aboutUs);
@@ -148,10 +146,10 @@ export function homepageLoad() {
     heroSection.style.maxWidth = "1200px";
     heroSection.style.margin = "0 auto";
     heroSection.style.width = "100%";
+    heroDiv.style.textAlign = "center"
     
     h1.style.fontSize = "3rem";
     h1.style.maxWidth = "600px";
-    h1.style.color = ""
     
     heroP.style.fontWeight = "300";
     heroP.style.marginTop = "15px";
@@ -180,62 +178,17 @@ export function homepageLoad() {
     
     //mediaquery for mobile screen
     
-    const mediaQuery = window.matchMedia('(max-width: 900px)');
+    const mediaQuery = window.matchMedia('(max-width: 600px)');
     
     function mobileScreen(mediaQuery){
        
         if(mediaQuery.matches){
-          
-            links.style.position = "fixed";
-            links.style.right = "-300px";
-            links.style.top = "0";
-            links.style.height = "100vh";
-            links.style.width = "170px";
-            links.style.background = "#fff";
-            links.style.margin = "0";
-            links.style.flexDirection = "column";
-            links.style.color = "#000"
-            links.style.padding = "70px 40px 0"
-            links.setAttribute('transition' , 'all 0.15s ease')
-            hoverColor(home, "#000");
-            hoverColor(menu , "#000");
-            hoverColor(aboutUs , "#000");
-
-            
-            const optionsBtn = document.createElement('span');
-            optionsBtn.classList.add("material-symbols-outlined");
-            optionsBtn.setAttribute('id' , 'optionsBtn');
-            optionsBtn.style.color = "#fff"
-            optionsBtn.textContent = "menu"
-            optionsBtn.style.position = "absolute"
-            optionsBtn.style.right = "50px";
-            optionsBtn.style.top = "20px";
-            optionsBtn.style.cursor = "pointer";
-            
-            const closeOptionsBtn = document.createElement('span');
-            closeOptionsBtn.classList.add('material-symbols-outlined');
-            closeOptionsBtn.setAttribute('id' , 'closeOptionsBtn')
-            closeOptionsBtn.textContent = "close";
-            closeOptionsBtn.style.position = "absolute"
-            closeOptionsBtn.style.right = "50px";
-            closeOptionsBtn.style.top = "20px";
-            closeOptionsBtn.style.color = "#000"
-            closeOptionsBtn.style.cursor = "pointer";
-            
-            nav.appendChild(optionsBtn);
-            optionsBtn.addEventListener('click' , () => {
-                links.style.right = "0";
-                links.style.color = "#000"
-                nav.appendChild(closeOptionsBtn);
-            } )
-
-            closeOptionsBtn.addEventListener ('click' , () => {
-                links.style.right = "-300px";
-                nav.removeChild(closeOptionsBtn);
-            } )
+            nav.style.flexDirection = "column";
 
         }
-        else  return;
+        else  {
+            nav.style.flexDirection = "row";
+        }
     }
     
     mobileScreen(mediaQuery);
