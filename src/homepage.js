@@ -1,4 +1,5 @@
 export function homepageLoad() {
+
     const body = document.querySelector('body'),
     content = body.querySelector('#content');
 
@@ -11,16 +12,15 @@ export function homepageLoad() {
     ul = document.createElement('ul'),
     span = document.createElement('span');
 
-    function hoverColor (x) {
+    function hoverColor (x , fontColor = "#fff") {
         x.onmouseover = function () {
             x.style.color = "#c06b3e"
         }
         x.onmouseout = function () {
-            x.style.color = "#fff"
+            x.style.color = fontColor;
         }
         x.style.transition = "all 0.2s ease"
     }
-
 
     // body
     body.style.margin = 0;
@@ -36,12 +36,12 @@ export function homepageLoad() {
 
     //header
     //nav bar
-
+    
     //Home, Menu , About Us
     let links = ul;
     links.classList.add('menu-links');
     links.style.listStyleType = "none";
-
+    
     let home = document.createElement('li');
     home.style.margin = "0"
     home.style.padding = "0"
@@ -49,26 +49,26 @@ export function homepageLoad() {
     home.textContent = "Home"
     hoverColor(home)
     links.appendChild(home);
-
+    
     let menu = document.createElement('li');
     menu.classList.add('menu');
     menu.textContent = "Menu";
     hoverColor(menu)
     links.appendChild(menu);
-
+    
     let aboutUs = document.createElement('li');
     aboutUs.classList.add('aboutUs');
     aboutUs.textContent = "About Us";
     hoverColor(aboutUs);
     links.appendChild(aboutUs);
-
+    
     //header
     header.style.position = "fixed";
     header.style.top = "0";
     header.style.left = "0";
     header.style.width = "100%"
     header.style.padding = "20px";
-
+    
     //nav
     nav.style.color = "#fff"
     nav.style.display = "flex"
@@ -89,42 +89,42 @@ export function homepageLoad() {
     logo.style.fontSize = "2.1rem"
     logo.style.fontWeight = "600";
     hoverColor(logo);
+    
 
-
-
+    
     //links
     links.style.display = 'flex';
     links.style.gap = "40px";
-
-
+    
+    
     nav.appendChild(logo);
     nav.appendChild(links);
     header.appendChild(nav)
     content.appendChild(header);
-
+    
     //HOME
-
+    
     //hero-Section 
     const heroSection = document.createElement('section');
     heroSection.classList.add('hero');
-
+    
     const heroDiv = document.createElement('div'),
     h1 = document.createElement('h1'),
     heroP = document.createElement('p'),
     orderBtn = document.createElement('button');
 
     heroDiv.classList.add('heroDiv')
-
+    
     h1.classList.add('heroHead');
     h1.textContent = "Start Your Day With Fresh Coffee"
-
+    
     heroP.classList.add('heroTxt');
     heroP.textContent = "Indulge in the goodness of freshly brewed coffee, crafted with love and care. Come, sip, and savor the moments of goodness at our cozy haven."
-
+    
     orderBtn.classList.add('orderBtn');
     orderBtn.textContent = "Order Now"
-
-
+    
+    
     function btnHoverColor (x) {
         x.onmouseover = function () {
             x.style.background = "#c06b3e"   
@@ -136,10 +136,10 @@ export function homepageLoad() {
         }
         x.style.transition = "all 0.2s ease"
     }
-
+    
     //hero style
-
-
+    
+    
     heroSection.style.height = "100vh";
     heroSection.style.display = "flex";
     heroSection.style.alignItems = "center";
@@ -148,20 +148,20 @@ export function homepageLoad() {
     heroSection.style.maxWidth = "1200px";
     heroSection.style.margin = "0 auto";
     heroSection.style.width = "100%";
-
+    
     h1.style.fontSize = "3rem";
     h1.style.maxWidth = "600px";
     h1.style.color = ""
-
+    
     heroP.style.fontWeight = "300";
     heroP.style.marginTop = "15px";
     heroP.style.maxWidth = "600px";     
-
-
+    
+    
     heroDiv.appendChild(h1)
     heroDiv.appendChild(heroP);
     heroDiv.appendChild(orderBtn);
-
+    
     orderBtn.style.background = "#fff";
     orderBtn.style.outline = "none";
     orderBtn.style.border = "none";
@@ -171,15 +171,56 @@ export function homepageLoad() {
     orderBtn.style.padding = "12px 30px";
     orderBtn.style.borderRadius = "6px";
     orderBtn.style.cursor = "pointer";
-
+    
     btnHoverColor(orderBtn);
-
+    
     heroSection.appendChild(heroDiv);
-
+    
     content.appendChild(heroSection)
+    
+    //mediaquery for mobile screen
+    
+    const mediaQuery = window.matchMedia('(max-width: 900px)');
+    
+    function mobileScreen(mediaQuery){
+       
+        if(mediaQuery.matches){
+          
+            links.style.position = "fixed";
+            links.style.left = "0";
+            links.style.top = "0";
+            links.style.height = "100vh";
+            links.style.width = "170px";
+            links.style.background = "#fff";
+            links.style.margin = "0";
+            links.style.flexDirection = "column";
+            links.style.color = "#000"
+            links.style.padding = "70px 40px 0"
+            hoverColor(home, "#000");
+            hoverColor(menu , "#000");
+            hoverColor(aboutUs , "#000");
 
+            
+            const optionsBtn = document.createElement('span');
+            optionsBtn.classList.add("material-symbols-outlined");
+            optionsBtn.style.color = "#fff"
+            optionsBtn.textContent = "menu"
 
-    const mediaQuery = window.matchMedia('(max-width: 850px');
+            const closeOptionsBtn = document.createElement('span');
+            closeOptionsBtn.classList.add('material-symbols-outlined');
+            closeOptionsBtn.textContent = "close";
+        
+            nav.appendChild(optionsBtn);
+            nav.appendChild(closeOptionsBtn);
+            header.appendChild(nav)
+            content.appendChild(header);
 
+        }
+        else  return;
+    }
+    
+    mobileScreen(mediaQuery);
+    mediaQuery.addEventListener('change' , () => mobileScreen(mediaQuery));
+    
 }    
     
