@@ -17,9 +17,7 @@ export function menuPageLoad () {
 
     
     const menuItems = document.createElement('div');
-
     menuItems.style.backdropFilter = "blur(4px)"
-
     menuItems.style.maxWidth = "1500px"
     menuItems.style.height = "600px"
     menuItems.style.margin = "180px auto 40px auto"
@@ -30,6 +28,7 @@ export function menuPageLoad () {
     menuItems.style.justifyItems = "center"
     menuItems.style.rowGap = '80px'
     menuItems.style.columnGap = '80px'
+    menuItems.style.background = "rgba(0,0,0,0.5)"
     menuItems.style.gridTemplateColumns = "repeat(auto-fit , minmax(200px , 300px))"
 
     function createMenuItem (name , path , price){

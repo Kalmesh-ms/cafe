@@ -116,6 +116,7 @@ export function bodyNav (){
         homepageLoad();
         }
     });
+    logo.style.padding = "0 15px"
     hoverColor(logo);
     
 

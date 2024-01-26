@@ -44,10 +44,12 @@ export function homepageLoad(){
         x.onmouseover = function () {
             x.style.background = "#c06b3e"   
             x.style.color = "#fff"
+            x.style.transform = "scale(0.8)"
         }
         x.onmouseout = function () {
             x.style.background = "#fff";
             x.style.color = "black"
+            x.style.transform = "scale(1)"
         }
         x.style.transition = "all 0.2s ease"
     }
