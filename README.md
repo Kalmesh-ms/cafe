@@ -1,5 +1,5 @@
 # Caffeine Co.
-## Cafe Page using JavaScript ES5 modules.
+## Cafe Page using JavaScript ES6 modules.
 - Module Bundler : Webpack
 - Package Manager : npm
-- Langauges : JavaScript with DOM manipulation for Styling (NO CSS)
+- pageLoad functions with modules 
